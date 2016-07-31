@@ -1,13 +1,33 @@
 import pickle
+from character import *
+from quest import *
 
 class Lootbag:
 
   def __init__(self):
-    self.quests = self.get_quest_file()
+    self.character = self.get_character_file()
 
-  def get_quest_file(self):
+  def get_character_file(self):
     try:
-      with open('quests.txt', 'r') as file:
+      with open('character.txt', 'r') as file:
         return pickle.load(file)
     except FileNotFoundError:
-      return list()
+      self.create_character()
+
+  def create_character(self):
+    pass
+
+  def write_character_file(self):
+    pass
+
+  def add_quest(self):
+    pass
+
+  def remove_quest(self):
+    pass
+
+  def find_quest_item(self):
+    pass
+
+  def fulfill_quest(self):
+    pass
