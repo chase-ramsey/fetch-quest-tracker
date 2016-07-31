@@ -5,13 +5,13 @@ from quest import *
 class Lootbag:
 
   def __init__(self):
-    self.character = self.get_character_file()
+    self.character = None
 
   def get_character_file(self):
     try:
-      with open('character.txt', 'r') as file:
-        return pickle.load(file)
-    except FileNotFoundError:
+      with open('character.txt', 'rb') as file:
+        self.character = pickle.load(file)
+    except EOFError:
       self.create_character()
 
   def create_character(self):
@@ -23,15 +23,16 @@ class Lootbag:
     level = input('> ')
     print('How much XP does {0} currently have?'.format(name))
     starting_xp = input('> ')
-    return Character(name, game, level, starting_xp)
+    self.character = Character(name, game, level, starting_xp)
+    self.write_character_file()
 
   def write_character_file(self):
-    with open('character.txt', 'w+') as file:
+    with open('character.txt', 'wb+') as file:
       pickle.dump(self.character, file)
 
   def add_quest(self, *args):
     if len(args) > 0 and len(args) < 3:
-      print('Looks like you don\'t have all the info needed to add a quest. Try again, or type "python lootbag.py" with no arguments if you\'ve forgotten what you need.')
+      print('Looks like you don\'t have all the info needed to add a quest. Try again, or type "python run.py" with no arguments if you\'ve forgotten what you need.')
     else:
       if len(args) == 0:
         print('Who are you questing for?')
@@ -49,7 +50,7 @@ class Lootbag:
 
   def remove_quest(self, *args):
     if len(args) > 0 and len(args) < 2:
-      print('Looks like you don\'t have all the info needed to add a quest. Try again, or type "python lootbag.py" with no arguments if you\'ve forgotten what you need.')
+      print('Looks like you don\'t have all the info needed to add a quest. Try again, or type "python run.py" with no arguments if you\'ve forgotten what you need.')
     else:
       if len(args) == 0:
         print('Who is the quest for?')
@@ -89,9 +90,13 @@ class Lootbag:
       if quest.person == person and quest.item == item:
         if quest.found == True:
           quest.mark_quest_fulfilled()
+          self.character.xp += quest.xp
+          print('Completed! {0} earned {1} XP.'.format(self.character.name, quest.xp))
         else:
           print('That item hasn\'t been marked as found yet. Would you like to mark it as found and fulfill the quest? [yes / no]')
           answer = input('> ')
           if answer.lower() == 'yes':
             quest.mark_item_found()
             quest.mark_quest_fulfilled()
+            self.character.xp += quest.xp
+            print('Completed! {0} earned {1} XP.'.format(self.character.name, quest.xp))

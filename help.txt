@@ -1,0 +1,6 @@
+Using Fetch Quest Terminal Tracker, you can keep up with fetch quests by sending simple arguments to the program's run file. Here's a breakdown of the functionality FQTT gives you access to:
+add [person] [item] [XP] - Typing "add" as the program's first argument will take you through a prompt to add a new quest. However, you can also quickly add a quest by providing the arguments listed (i.e. "add Frodo ring 1000".)
+remove [person] [item] - Typing "remove" as the program's first argument will take you through a prompt to delete a previously added quest. As with add, you can quickly remove a quest by providing the arguments listed when running the program (i.e. "remove Frodo ring").
+found [item] [person] - Typing "find" as the program's first argument will take you through a prompt to mark a quest item as found. Adding item and person as arguments will allow you to quickly mark the item as found (i.e. "find ring Frodo")
+fulfill [person] [item] - Typing "fulfill" as the program's first argument will take you through a prompt to mark a quest as completed. Adding person and item as arguments will allow you to quickly mark the quest as completed (i.e. "fulfill Frodo ring")
+list - Typing "list" will print a list of all active quests, both completed and incomplete.
