@@ -31,7 +31,7 @@ class Lootbag:
 
   def add_quest(self, *args):
     if len(args) > 0 and len(args) < 3:
-      print('Looks like you don\'t have all the info needed to add a quest. Try again, or type "python lootbag.py" with no arguments if you\'ve forgotten what you need.')
+      print('Looks like you don\'t have all the info needed to add a quest. Try again, or type "python run.py" with no arguments if you\'ve forgotten what you need.')
     else:
       if len(args) == 0:
         print('Who are you questing for?')
@@ -41,15 +41,15 @@ class Lootbag:
         print('How much XP will you receive when you complete the quest?')
         xp = input('> ')
       elif len(args) == 3:
-        person = args[0]
-        item = args[1]
+        item = args[0]
+        person = args[1]
         xp = args[2]
       new_quest = Quest(person, item, xp)
       self.character.quests.append(new_quest)
 
   def remove_quest(self, *args):
     if len(args) > 0 and len(args) < 2:
-      print('Looks like you don\'t have all the info needed to add a quest. Try again, or type "python lootbag.py" with no arguments if you\'ve forgotten what you need.')
+      print('Looks like you don\'t have all the info needed to add a quest. Try again, or type "python run.py" with no arguments if you\'ve forgotten what you need.')
     else:
       if len(args) == 0:
         print('Who is the quest for?')
