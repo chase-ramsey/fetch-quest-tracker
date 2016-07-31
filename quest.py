@@ -3,7 +3,7 @@ class Quest:
   def __init__(self, person, item, xp):
     self.person = person
     self.item = item
-    self.xp = xp
+    self.xp = int(xp)
     self.found = False
     self.fulfilled = False
 

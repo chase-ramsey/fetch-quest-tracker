@@ -9,7 +9,7 @@ class TestQuest(unittest.TestCase):
     quest = Quest('Abed', 'Die Hard', '50')
     self.assertEqual(quest.person, 'Abed')
     self.assertEqual(quest.item, 'Die Hard')
-    self.assertEqual(quest.xp, '50')
+    self.assertEqual(quest.xp, 50)
     self.assertEqual(quest.found, False)
     self.assertEqual(quest.fulfilled, False)
 
@@ -32,18 +32,18 @@ class TestCharacter(unittest.TestCase):
     char = Character('Heathcliff', 'Dragon Age: Inquisition', '34', '8000')
     self.assertEqual(char.name, 'Heathcliff')
     self.assertEqual(char.game, 'Dragon Age: Inquisition')
-    self.assertEqual(char.level, '34')
-    self.assertEqual(char.xp, '8000')
+    self.assertEqual(char.level, 34)
+    self.assertEqual(char.xp, 8000)
 
   def test_increase_xp(self):
     char = Character('Heathcliff', 'Dragon Age: Inquisition', '34', '8000')
     char.increase_xp('500')
-    self.assertEqual(char.xp, '8500')
+    self.assertEqual(char.xp, 8500)
 
   def test_level_up(self):
     char = Character('Heathcliff', 'Dragon Age: Inquisition', '34', '8000')
     char.level_up()
-    self.assertEqual(char.level, '35')
+    self.assertEqual(char.level, 35)
 
 
 if __name__ == '__main__':
