@@ -15,7 +15,15 @@ class Lootbag:
       self.create_character()
 
   def create_character(self):
-    pass
+    print('What is your character\'s name?')
+    name = input('> ')
+    print('What game does {0} belong to?'.format(name))
+    game = input('> ')
+    print('What level is {0}?'.format(name))
+    level = input('> ')
+    print('How much xp does {0} currently have?'.format(name))
+    starting_xp = input('> ')
+    return Character(name, game, level, starting_xp)
 
   def write_character_file(self):
     pass
