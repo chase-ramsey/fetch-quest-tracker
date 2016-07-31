@@ -5,13 +5,13 @@ from quest import *
 class Lootbag:
 
   def __init__(self):
-    self.character = self.get_character_file()
+    self.character = None
 
   def get_character_file(self):
     try:
-      with open('character.txt', 'r') as file:
-        return pickle.load(file)
-    except FileNotFoundError:
+      with open('character.txt', 'rb') as file:
+        self.character = pickle.load(file)
+    except EOFError:
       self.create_character()
 
   def create_character(self):
@@ -23,10 +23,11 @@ class Lootbag:
     level = input('> ')
     print('How much XP does {0} currently have?'.format(name))
     starting_xp = input('> ')
-    return Character(name, game, level, starting_xp)
+    self.character = Character(name, game, level, starting_xp)
+    self.write_character_file()
 
   def write_character_file(self):
-    with open('character.txt', 'w+') as file:
+    with open('character.txt', 'wb+') as file:
       pickle.dump(self.character, file)
 
   def add_quest(self, *args):
@@ -41,8 +42,8 @@ class Lootbag:
         print('How much XP will you receive when you complete the quest?')
         xp = input('> ')
       elif len(args) == 3:
-        item = args[0]
-        person = args[1]
+        person = args[0]
+        item = args[1]
         xp = args[2]
       new_quest = Quest(person, item, xp)
       self.character.quests.append(new_quest)
@@ -89,9 +90,13 @@ class Lootbag:
       if quest.person == person and quest.item == item:
         if quest.found == True:
           quest.mark_quest_fulfilled()
+          self.character.xp += quest.xp
+          print('Completed! {0} earned {1} XP.'.format(self.character.name, quest.xp))
         else:
           print('That item hasn\'t been marked as found yet. Would you like to mark it as found and fulfill the quest? [yes / no]')
           answer = input('> ')
           if answer.lower() == 'yes':
             quest.mark_item_found()
             quest.mark_quest_fulfilled()
+            self.character.xp += quest.xp
+            print('Completed! {0} earned {1} XP.'.format(self.character.name, quest.xp))
