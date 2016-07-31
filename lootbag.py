@@ -20,14 +20,14 @@ class Lootbag:
   def write_character_file(self):
     pass
 
-  def add_quest(self):
+  def add_quest(self, person, item, xp):
     pass
 
-  def remove_quest(self):
+  def remove_quest(self, person):
     pass
 
-  def find_quest_item(self):
+  def find_quest_item(self, item):
     pass
 
-  def fulfill_quest(self):
+  def fulfill_quest(self, person):
     pass

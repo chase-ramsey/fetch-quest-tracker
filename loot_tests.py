@@ -46,8 +46,5 @@ class TestCharacter(unittest.TestCase):
     self.assertEqual(char.level, '35')
 
 
-class TestLootbag(unittest.TestCase):
-  pass
-
 if __name__ == '__main__':
   unittest.main()
