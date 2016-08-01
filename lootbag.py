@@ -11,7 +11,7 @@ class Lootbag:
     try:
       with open('character.txt', 'rb') as file:
         self.character = pickle.load(file)
-    except EOFError:
+    except FileNotFoundError:
       self.create_character()
 
   def create_character(self):

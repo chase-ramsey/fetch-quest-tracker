@@ -12,7 +12,7 @@ The first argument for the program is the task you want the FQTT to perform. For
 
 - `remove [person] [item]` - Typing "remove" as the program's first argument will take you through a prompt to delete a previously added quest. As with add, you can quickly remove a quest by providing the arguments listed when running the program (i.e. "remove Frodo ring").
 
-- `found [item] [person]` - Typing "find" as the program's first argument will take you through a prompt to mark a quest item as found. Adding item and person as arguments will allow you to quickly mark the item as found (i.e. "find ring Frodo")
+- `found [person] [item]` - Typing "find" as the program's first argument will take you through a prompt to mark a quest item as found. Adding item and person as arguments will allow you to quickly mark the item as found (i.e. "find ring Frodo")
 
 - `fulfill [person] [item]` - Typing "fulfill" as the program's first argument will take you through a prompt to mark a quest as completed. Adding person and item as arguments will allow you to quickly mark the quest as completed (i.e. "fulfill Frodo ring")
 

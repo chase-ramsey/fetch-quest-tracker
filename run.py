@@ -72,6 +72,12 @@ class Run:
           self.loot.fulfill_quest(person, item)
         except IndexError:
           self.loot.fulfill_quest()
+      else:
+        print('Sorry, I didn\'t understand your request. Take a look at the commands below, and make sure you formatted yours correctly. You can also type "list" as the program\'s first argument to see what quests are active.')
+        print('')
+        with open('help.txt', 'r') as file:
+          for line in file:
+            print(line)
 
 run = Run()
 run.loot.get_character_file()
